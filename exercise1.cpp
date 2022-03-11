@@ -6,19 +6,21 @@ using namespace std;
 struct Person
 {
     int id;
-    string Name;
-    string Last;
+    std::string Name;
+    std::string Last;
     float height;
 };
 
 // Prototypes
 Person * initPeople(int);
 Person &change_name(Person[]);
+void multiply(double &,double &, double &);
+double perimeter(double, double, double w=4.8, double z = 5.9);
 
 int main(int argc, char const *argv[])
 {
     system("chcp 1253>nul");
-    cout << "1ο ζητούμενο: αλλάγη τιμής σε const double " << endl ;
+    cout << "\n1ο ζητούμενο: αλλάγη τιμής σε const double " << endl ;
     // Δήλωση const double και ενός Pointer που δείχνει σε double
     const double num = 2.2;
     double *point;
@@ -29,10 +31,11 @@ int main(int argc, char const *argv[])
     // Αλλαγή της τιμής κάνοντας χρήση του Pointer
     *point = 90.2;
 
-    cout << num << " " << *point << endl;
+    cout << "Num =" << num; 
+    cout << "*point =" << *point << endl;
 
 
-    cout << "2ο ζητούμενο: χρήση τελεστών new,new[],delete και delete[] " << endl ;
+    cout << "\n2ο ζητούμενο: χρήση τελεστών new,new[],delete και delete[] " << endl ;
     // new & delete
     int *year;
     year = new int;
@@ -42,19 +45,35 @@ int main(int argc, char const *argv[])
 
     // new[] & delete[]
     int p;
-    cout << "Πόσες θέσεις να δεσμέσω;" << endl ;
+    cout << "\nΠόσα αντικείμενα Person να δημιουργηθούν; " << endl ;
     cin >> p;
     Person *person = initPeople(p);
+    
     delete[] person; 
 
 
-    cout << "3ο ζητούμενο: χρήση της αναφοράς στις παραμέτρους και τον τύπο επιστροφής των συναρτήσεων" << endl ;
+    cout << "\n3ο ζητούμενο: χρήση της αναφοράς στις παραμέτρους και τον τύπο επιστροφής των συναρτήσεων" << endl ;
 
-    cout << "4ο ζητούμενο: υπερφόρτωση συνάρτησης και οι συναρτήσεις με παραμέτρους οι οποίες έχουν default τιμές" << endl ;
+    // Χρήση αναφοράς στις παραμέτρους
+    cout << "\nΠολλαπλασιασμός 2 αριθμών" << endl;
+    double num1,num2,res;
+    cout << "Δώσε 1ο αριθμό: ";
+    cin >> num1;
+    cout << "\nΔώσε 2ο αριθμό: ";
+    cin >> num2; 
+    multiply(num1,num2,res);
+    cout << res << endl;
 
+
+    cout << "\n4ο ζητούμενο: υπερφόρτωση συνάρτησης και οι συναρτήσεις με παραμέτρους οι οποίες έχουν default τιμές" << endl ;
+
+    perimeter(2.2,3.2,2.3,4.2);
+    perimeter(2.2,3.2,2.3);
+    perimeter(2.2,3.2);
     return 0;
 }
 
+// Συνάρτηση για την αρχικοποίηση του αντικειμένου Person
 Person *initPeople(int p){
     string fname,lname;
     float height;
@@ -62,17 +81,30 @@ Person *initPeople(int p){
     Person *temp = new Person[p];
     // Δημιουργία αντικειμένων Person από τον χρήστη
     for (int i = 0; i < p; i++){
-        cout << i+1 <<"ος Person" << endl;
+        cout << "Person " << i+1 << endl ;
         temp[i].id = i;
-        cout <<"Όνομα: " << endl;
+        cout <<"Όνομα: ";
         cin >> fname;
         temp[i].Name  = fname;
-        cout <<"Επώνυμο: " << endl;
+        cout <<"Επώνυμο: ";
         cin >> lname;
         temp[i].Last = lname;
-        cout <<"Ύψος: " << endl;
+        cout <<"Ύψος: ";
         cin >> height;
         temp[i].height = height;
     }
     return temp;
 }
+
+// Συνάρτηση πολλαπλασιασμού κάνοντας χρήση αναφορών στις παραμέτρους
+void multiply(double &num1, double &num2, double &res){
+    res = num1 * num2;
+}
+
+
+// Συνάρτηση υπολογισμός περιμέτρου 
+double perimeter(double x, double y, double w, double z){
+    double res = x + y + w + z;
+    return res;
+}
+
