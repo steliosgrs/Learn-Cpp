@@ -1,0 +1,110 @@
+#include <iostream>
+#include <stdio.h>
+
+using namespace std;
+
+struct Person
+{
+    int id;
+    std::string Name;
+    std::string Last;
+    float height;
+};
+
+// Prototypes
+Person * initPeople(int);
+Person &change_name(Person[]);
+void multiply(double &,double &, double &);
+double perimeter(double, double, double w=4.8, double z = 5.9);
+
+int main(int argc, char const *argv[])
+{
+    system("chcp 1253>nul");
+    cout << "\n1ο ζητούμενο: αλλάγη τιμής σε const double " << endl ;
+    // Δήλωση const double και ενός Pointer που δείχνει σε double
+    const double num = 2.2;
+    double *point;
+
+    point = (double *)&num; // To casting είναι απαραίτητο 
+                          // double με το const double είναι διαφορετικός τύπος δεδομένων.
+
+    // Αλλαγή της τιμής κάνοντας χρήση του Pointer
+    *point = 90.2;
+
+    cout << "Num =" << num; 
+    cout << "*point =" << *point << endl;
+
+
+    cout << "\n2ο ζητούμενο: χρήση τελεστών new,new[],delete και delete[] " << endl ;
+    // new & delete
+    int *year;
+    year = new int;
+    *year = 2022;
+    cout << "To year = " << *year << endl;
+    delete year;
+
+    // new[] & delete[]
+    int p;
+    cout << "\nΠόσα αντικείμενα Person να δημιουργηθούν; " << endl ;
+    cin >> p;
+    Person *person = initPeople(p);
+    
+    delete[] person; 
+
+
+    cout << "\n3ο ζητούμενο: χρήση της αναφοράς στις παραμέτρους και τον τύπο επιστροφής των συναρτήσεων" << endl ;
+
+    // Χρήση αναφοράς στις παραμέτρους
+    cout << "\nΠολλαπλασιασμός 2 αριθμών" << endl;
+    double num1,num2,res;
+    cout << "Δώσε 1ο αριθμό: ";
+    cin >> num1;
+    cout << "\nΔώσε 2ο αριθμό: ";
+    cin >> num2; 
+    multiply(num1,num2,res);
+    cout << res << endl;
+
+
+    cout << "\n4ο ζητούμενο: υπερφόρτωση συνάρτησης και οι συναρτήσεις με παραμέτρους οι οποίες έχουν default τιμές" << endl ;
+
+    perimeter(2.2,3.2,2.3,4.2);
+    perimeter(2.2,3.2,2.3);
+    perimeter(2.2,3.2);
+    return 0;
+}
+
+// Συνάρτηση για την αρχικοποίηση του αντικειμένου Person
+Person *initPeople(int p){
+    string fname,lname;
+    float height;
+    // Δυναμική δεύμεση πίνακα p θέσεων
+    Person *temp = new Person[p];
+    // Δημιουργία αντικειμένων Person από τον χρήστη
+    for (int i = 0; i < p; i++){
+        cout << "Person " << i+1 << endl ;
+        temp[i].id = i;
+        cout <<"Όνομα: ";
+        cin >> fname;
+        temp[i].Name  = fname;
+        cout <<"Επώνυμο: ";
+        cin >> lname;
+        temp[i].Last = lname;
+        cout <<"Ύψος: ";
+        cin >> height;
+        temp[i].height = height;
+    }
+    return temp;
+}
+
+// Συνάρτηση πολλαπλασιασμού κάνοντας χρήση αναφορών στις παραμέτρους
+void multiply(double &num1, double &num2, double &res){
+    res = num1 * num2;
+}
+
+
+// Συνάρτηση υπολογισμός περιμέτρου 
+double perimeter(double x, double y, double w, double z){
+    double res = x + y + w + z;
+    return res;
+}
+
