@@ -110,6 +110,9 @@ Person *initPeople(int p){
         cout <<"Ύψος: ";
         cin >> height;
         temp[i].height = height;
+        cout << "===Δημιουργήθηκε==="<<endl;
+        cout << "Όνοματεπώνυμο: " << temp[i].Name <<" "<< temp[i].Last<<endl;
+        cout << "Ύψος: "<<temp[i].height<<endl;
     }
     return temp;
 }
