@@ -10,5 +10,5 @@ Exercise1/nul
 */a.out
 */*.exe
 
-*/*/a.out
-*/*/*.exe
+**/a.out
+**.exe

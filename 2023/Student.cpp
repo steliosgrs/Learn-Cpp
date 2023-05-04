@@ -29,7 +29,7 @@ Student::Student(const char *am, string n, unsigned int s){
 }
 
 Student::Student(const Student &s){
-    cout << "Copy Constructor" << endl;
+    cout << "Copy Constructor" <<endl;
     AM = new char[strlen(s.AM)+1];
     strcpy(AM,s.AM);
     name = s.name;
@@ -71,8 +71,6 @@ unsigned int Student::getSemester(){
     return semester;
 }
 
-
-
 //Εμφάνιση των στοιχείων του φοιτητή
 void Student::print_stud(ostream& os) { 
     os << "\tΑΜ:"<< AM <<endl;
@@ -84,3 +82,4 @@ void Student::print_stud(ostream& os) {
 void Student::next_semester(){
     semester+=1;
 }
+
