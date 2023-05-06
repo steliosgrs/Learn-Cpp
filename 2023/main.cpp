@@ -36,12 +36,12 @@ public:
     
     // Μέθοδοι
     void next_semester();
-    void print_stud(ostream &);
     void operator++ (int);
     void operator+= (unsigned int);
     void operator-= (unsigned int);
 
 };
+// Overload for <<
 ostream& operator<< (ostream &,  Student&);
 
 // Constructors
@@ -109,15 +109,8 @@ unsigned int Student::getSemester(){
 }
 
 //Εμφάνιση των στοιχείων του φοιτητή
-void Student::print_stud(ostream& os) { 
-    os << "ΑΜ:"<< AM <<endl;
-    os << "Ονοματεπώνυμο: "<< name <<endl;
-    os << "Εξάμηνο: "<< semester <<endl;
-}
-
 ostream& operator<<(ostream &output, Student& student){
-    // ostream &os;
-    output << student.getAM() << "," << student.getName() << "," << student.getSemester() << endl;
+    output << student.getAM() << ", " << student.getName() << ", " << student.getSemester() << endl;
     return output;
 }
 // Αύξηση του τρέχονοτος εξαμήνου
@@ -155,6 +148,7 @@ int main(int argc, char const *argv[]) {
     Student test(kiri);
     test+=5;
     cout<<test;
+    
     test-=5;
     cout<<test;
     cout << endl;
