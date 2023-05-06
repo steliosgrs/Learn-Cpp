@@ -36,76 +36,76 @@ public:
     
     // Μέθοδοι
     void next_semester();
-    // void print_stud  () const;
     void print_stud(ostream &);
     void operator++ (int);
-    void operator+= (int);
-    void operator-= (int);
+    void operator+= (unsigned int);
+    void operator-= (unsigned int);
 
 };
+ostream& operator<< (ostream &,  Student&);
 
 // Constructors
-Student::Student(const char *am, string n){
+Student::Student(const char *AM, string name){
     cout << " Δημιουργία Φοιτητή" << endl;
     int size;
-    size = strlen(am);
-    AM = new char[size+1];
-    strcpy(AM,am);
-    name = n;
+    size = strlen(AM);
+    this->AM = new char[size+1];
+    strcpy(this->AM,AM);
+    this->name = name;
     semester = 1;
 }
 
-Student::Student(const char *am, string n, unsigned int s){
+Student::Student(const char *AM, string name, unsigned int semester){
     cout << " Δημιουργία Φοιτητή με εξάμηνο" << endl;
     int size;
-    size = strlen(am);
-    AM = new char[size+1];
-    strcpy(AM,am);
-    name = n;
-    semester = s;
+    size = strlen(AM);
+    this->AM = new char[size+1];
+    strcpy(this->AM,AM);
+    this->name = name;
+    this->semester = semester;
 }
 
 Student::Student(const Student &s){
     cout << "Copy Constructor" <<endl;
-    AM = new char[strlen(s.AM)+1];
-    strcpy(AM,s.AM);
-    name = s.name;
-    semester = s.semester;
+    this->AM = new char[strlen(s.AM)+1];
+    strcpy(this->AM,s.AM);
+    this->name = s.name;
+    this->semester = s.semester;
 }
 
 // Destructor
 Student::~Student(){
     cout << " Καταστροφή Φοιτητή " << this->name << endl;
-    delete[] AM;
+    delete[] this->AM;
 }
 
 // Setters
-void Student::setAM(const char *am) {
-    delete[] AM;
-    int size = strlen(am);
-    AM = new char[size+1];
-    strcpy(AM,am);
+void Student::setAM(const char *AM) {
+    delete[] this->AM;
+    int size = strlen(AM);
+    this->AM = new char[size+1];
+    strcpy(this->AM,AM);
 }
 
-void Student::setName(const string n){
-    name=n;
+void Student::setName(const string name){
+    this->name = name;
 }
 
-void Student::setSemester(const unsigned int s){
-    semester = s;
+void Student::setSemester(const unsigned int semester){
+    this->semester = semester;
 }
 
 //Getters
 char* Student::getAM(){
-    return AM;
+    return this->AM;
 }
 
 string Student::getName(){
-    return name;
+    return this->name;
 }
 
 unsigned int Student::getSemester(){
-    return semester;
+    return this->semester;
 }
 
 //Εμφάνιση των στοιχείων του φοιτητή
@@ -115,20 +115,21 @@ void Student::print_stud(ostream& os) {
     os << "Εξάμηνο: "<< semester <<endl;
 }
 
+ostream& operator<<(ostream &output, Student& student){
+    // ostream &os;
+    output << student.getAM() << "," << student.getName() << "," << student.getSemester() << endl;
+    return output;
+}
 // Αύξηση του τρέχονοτος εξαμήνου
 void Student ::operator++ (int){
     this->semester++;
 }
-void Student ::operator+= (int s){
-    semester+=s;
+void Student ::operator+= (unsigned int semester){
+    this->semester+=semester;
 }
-void Student ::operator-= (int s){
-    semester-=s;
+void Student ::operator-= (unsigned int semester){
+    this->semester-=semester;
 }
-
-// void operator++ (Student&){
-//     // this->semester++;
-// }
 
 /* Στέλιος Γεωργαράς ΑΜ:45354 ΠΑΔΑ*/
 
@@ -137,28 +138,25 @@ int main(int argc, char const *argv[]) {
 
     // Constructor Μόνο το ΑΜ και το Ονοματεπώνυμο
     Student ste("cse45354","Στέλιος Γεωργαράς");
-    // ste.print_stud();
-    ste.print_stud(cout);
+    cout << ste;
     cout <<endl;
 
     // Constructor για όλα τα χαρακτηριστικά
     Student kiri("kiri12345","Κυριάκος Παπαδόπουλος", 4);
-    // kiri.print_stud();
-    kiri.print_stud(cout);
+    cout << kiri;
     cout << endl;
+
     // Αύξηση εξαμήνου
-    // kiri.next_semester();
     kiri++;
-    kiri.print_stud(cout);
+    cout << kiri;
     cout << endl;
 
     // Copy Constructor 
     Student test(kiri);
-    // c.print_stud();
     test+=5;
-    test.print_stud(cout);
+    cout<<test;
     test-=5;
-    test.print_stud(cout);
+    cout<<test;
     cout << endl;
     return 0;
 }
