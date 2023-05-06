@@ -141,14 +141,17 @@ int main(int argc, char const *argv[]) {
 
     // Αύξηση εξαμήνου
     kiri++;
+    cout << "Αύξηση εξαμήνου" << endl;
     cout << kiri;
     cout << endl;
 
     // Copy Constructor 
     Student test(kiri);
+    cout << "Υπερφόρτωση Τελεστή +=" << endl;
     test+=5;
     cout<<test;
-    
+
+    cout << "Υπερφόρτωση Τελεστή -=" << endl;
     test-=5;
     cout<<test;
     cout << endl;
