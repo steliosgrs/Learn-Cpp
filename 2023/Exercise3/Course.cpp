@@ -1,10 +1,11 @@
-#ifndef STUDENT_H
-#define STUDENT_H
+#ifndef _COURSE_H_
+#define _COURSE_H_
+
 /* Header file
     - Class Attributes
     - Functions Prototypes*/
 
-class Student{
+class Course{
 
 private:
 // Στοιχεία φοιτητή
@@ -14,12 +15,12 @@ private:
 
 public:
 // Constructors
-    Student(const char *, string);
-    Student(const char *, string, unsigned int);
-    Student(const Student&);
+    Course(const char *, string);
+    Course(const char *, string, unsigned int);
+    Course(const Course&);
 
 // Destructor
-    ~Student();
+    ~Course();
 
 // ======Setters Getters Μέθsοδοι======
 
