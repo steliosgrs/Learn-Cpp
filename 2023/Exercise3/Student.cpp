@@ -1,15 +1,12 @@
 #include <iostream>
-#include <stdio.h>
+// #include <stdio.h>
 #include <string.h>
-#include <string>
 #include <new>
 #include "Student.h"
 
-using namespace std;
-
 // Constructors
-Student::Student(const char *am, string n){
-    cout << " Δημιουργία Φοιτητή" << endl;
+Student::Student(const char *am, std::string n){
+    std::cout << " Δημιουργία Φοιτητή" << std::endl;
     int size;
     size = strlen(am);
     AM = new char[size+1];
@@ -18,8 +15,8 @@ Student::Student(const char *am, string n){
     semester = 1;
 }
 
-Student::Student(const char *am, string n, unsigned int s){
-    cout << " Δημιουργία Φοιτητή με εξάμηνο" << endl;
+Student::Student(const char *am, std::string n, unsigned int s){
+    std::cout << " Δημιουργία Φοιτητή με εξάμηνο" << std::endl;
     int size;
     size = strlen(am);
     AM = new char[size+1];
@@ -29,7 +26,7 @@ Student::Student(const char *am, string n, unsigned int s){
 }
 
 Student::Student(const Student &s){
-    cout << "Copy Constructor" <<endl;
+    std::cout << "Copy Constructor" <<std::endl;
     AM = new char[strlen(s.AM)+1];
     strcpy(AM,s.AM);
     name = s.name;
@@ -38,7 +35,7 @@ Student::Student(const Student &s){
 
 // Destructor
 Student::~Student(){
-    cout << " Καταστροφή Φοιτητή" << endl;
+    std::cout << " Καταστροφή Φοιτητή" << std::endl;
     delete[] AM;
 }
 
@@ -50,7 +47,7 @@ void Student::setAM(const char *am) {
     strcpy(AM,am);
 }
 
-void Student::setName(const string n){
+void Student::setName(const std::string n){
     name=n;
 }
 
@@ -63,7 +60,7 @@ char* Student::getAM(){
     return AM;
 }
 
-string Student::getName(){
+std::string Student::getName(){
     return name;
 }
 
@@ -72,10 +69,10 @@ unsigned int Student::getSemester(){
 }
 
 //Εμφάνιση των στοιχείων του φοιτητή
-void Student::print_stud(ostream& os) { 
-    os << "\tΑΜ:"<< AM <<endl;
-    os << "\tΟνοματεπώνυμο: "<< name <<endl;
-    os << "\tΕξάμηνο: "<< semester <<endl;
+void Student::print_stud(std::ostream& os) { 
+    os << "\tΑΜ:"<< AM <<std::endl;
+    os << "\tΟνοματεπώνυμο: "<< name <<std::endl;
+    os << "\tΕξάμηνο: "<< semester <<std::endl;
 }
 
 // Αύξηση του τρέχονοτος εξαμήνου
