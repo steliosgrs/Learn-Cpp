@@ -40,9 +40,6 @@ public:
     bool getSemester() const;
     
     // Μέθοδοι
-    // void next_semester();
-    // // void print_stud  () const;
-    // void print_stud(std::ostream &);
 
 };
 

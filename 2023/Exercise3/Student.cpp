@@ -82,8 +82,14 @@ void Student ::operator+= (unsigned int semester){
 }
 void Student ::operator-= (unsigned int semester){
     this->semester-=semester;
-
 }
+
+// Exercise 3
+void Student::operator+=(const std::pair<Course*, float> &course){
+    this->courses.push_back(course);
+}
+
+
 Student& Student::operator=(const Student &s){
     std::cout << "Copy Constructor" <<std::endl;
     if (this->AM){
@@ -94,4 +100,23 @@ Student& Student::operator=(const Student &s){
     this->name = s.name;
     this->semester = s.semester;
     return *this;
+}
+
+bool Student::operator== (const Student &stud){
+    return this->semester==stud.semester;
+}
+bool Student::operator!= (const Student &stud){
+    return this->semester!=stud.semester;
+}
+bool Student::operator< (const Student &stud){
+    return this->semester<stud.semester;
+}
+bool Student::operator<= (const Student &stud){
+    return this->semester<=stud.semester;
+}
+bool Student::operator> (const Student &stud){
+    return this->semester>stud.semester;
+}
+bool Student::operator>= (const Student &stud){
+    return this->semester>=stud.semester;
 }
