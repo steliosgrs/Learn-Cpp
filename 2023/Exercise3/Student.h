@@ -22,6 +22,7 @@ public:
     Student(const char *, std::string);
     Student(const char *, std::string, unsigned int);
     Student(const Student&);
+    Student &operator=(const Student &);
 
 // Destructor
     ~Student();
@@ -40,9 +41,9 @@ public:
     
     // Μέθοδοι
     void next_semester();
-    // void print_stud  () const;
-    void print_stud(std::ostream &);
-
+    void operator++ (int);
+    void operator+= (unsigned int);
+    void operator-= (unsigned int);
 };
 
 

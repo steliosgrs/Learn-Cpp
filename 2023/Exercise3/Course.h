@@ -10,35 +10,39 @@ class Course{
 
 private:
 // Στοιχεία μαθήματος
-    char * AM;
+    std::string code;
     std::string name;
-    unsigned int semester;
+    unsigned int hours;
+    bool semester;
+    // enum semester{Χειμερινό, Εαρινό};
+        // enum semester{Xeimerino = "Χειμερινό",
+        //             Earino = "Εαρινό"};
 
 public:
 // Constructors
-    Course(const char *, std::string);
-    Course(const char *, std::string, unsigned int);
-    Course(const Course&);
+    Course(const std::string, const std::string, unsigned int, bool);
 
 // Destructor
-    ~Course();
+    virtual ~Course();
 
-// ======Setters Getters Μέθsοδοι======
+// ======Setters Getters Μέθοδοι======
 
     // Setters
-    void setAM(const char *);
+    void setCode(const std::string);
     void setName(const std::string);
-    void setSemester(const unsigned int);
+    void setHours(const unsigned int);
+    void setSemester(const bool);
 
     // Getters
-    char* getAM();
-    std::string getName();
-    unsigned int getSemester();
+    std::string getCode() const;
+    std::string getName() const;
+    unsigned int getHours() const;
+    bool getSemester() const;
     
     // Μέθοδοι
-    void next_semester();
-    // void print_stud  () const;
-    void print_stud(std::ostream &);
+    // void next_semester();
+    // // void print_stud  () const;
+    // void print_stud(std::ostream &);
 
 };
 

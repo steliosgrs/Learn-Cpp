@@ -1,6 +1,6 @@
 #include "Course.h"
 
-Course::Course(const char *am, const std::string course_name){
+Course::Course(const std::string code, const std::string name, unsigned int hours, bool semester){
 
 }
 

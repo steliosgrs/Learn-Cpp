@@ -5,78 +5,93 @@
 #include "Student.h"
 
 // Constructors
-Student::Student(const char *am, std::string n){
+Student::Student(const char *AM, std::string name){
     std::cout << " Δημιουργία Φοιτητή" << std::endl;
     int size;
-    size = strlen(am);
-    AM = new char[size+1];
-    strcpy(AM,am);
-    name = n;
+    size = strlen(AM);
+    this->AM = new char[size+1];
+    strcpy(this->AM,AM);
+    this->name = name;
     semester = 1;
 }
 
-Student::Student(const char *am, std::string n, unsigned int s){
+Student::Student(const char *AM, std::string name, unsigned int semester){
     std::cout << " Δημιουργία Φοιτητή με εξάμηνο" << std::endl;
     int size;
-    size = strlen(am);
-    AM = new char[size+1];
-    strcpy(AM,am);
-    name = n;
-    semester = s;
+    size = strlen(AM);
+    this->AM = new char[size+1];
+    strcpy(this->AM,AM);
+    this->name = name;
+    this->semester = semester;
 }
 
 Student::Student(const Student &s){
     std::cout << "Copy Constructor" <<std::endl;
-    AM = new char[strlen(s.AM)+1];
-    strcpy(AM,s.AM);
-    name = s.name;
-    semester = s.semester;
+    this->AM = new char[strlen(s.AM)+1];
+    strcpy(this->AM,s.AM);
+    this->name = s.name;
+    this->semester = s.semester;
 }
 
 // Destructor
 Student::~Student(){
-    std::cout << " Καταστροφή Φοιτητή" << std::endl;
-    delete[] AM;
+    std::cout << " Καταστροφή Φοιτητή " << this->name << std::endl;
+    delete[] this->AM;
 }
 
 // Setters
-void Student::setAM(const char *am) {
-    delete[] AM;
-    int size = strlen(am);
-    AM = new char[size+1];
-    strcpy(AM,am);
+void Student::setAM(const char *AM) {
+    delete[] this->AM;
+    int size = strlen(AM);
+    this->AM = new char[size+1];
+    strcpy(this->AM,AM);
 }
 
-void Student::setName(const std::string n){
-    name=n;
+void Student::setName(const std::string name){
+    this->name = name;
 }
 
-void Student::setSemester(const unsigned int s){
-    semester = s;
+void Student::setSemester(const unsigned int semester){
+    this->semester = semester;
 }
 
 //Getters
 char* Student::getAM(){
-    return AM;
+    return this->AM;
 }
 
 std::string Student::getName(){
-    return name;
+    return this->name;
 }
 
 unsigned int Student::getSemester(){
-    return semester;
+    return this->semester;
 }
 
 //Εμφάνιση των στοιχείων του φοιτητή
-void Student::print_stud(std::ostream& os) { 
-    os << "\tΑΜ:"<< AM <<std::endl;
-    os << "\tΟνοματεπώνυμο: "<< name <<std::endl;
-    os << "\tΕξάμηνο: "<< semester <<std::endl;
+std::ostream& operator<<(std::ostream &output, Student& student){
+    output << student.getAM() << ", " << student.getName() << ", " << student.getSemester() << std::endl;
+    return output;
 }
-
 // Αύξηση του τρέχονοτος εξαμήνου
-void Student::next_semester(){
-    semester+=1;
+void Student ::operator++ (int){
+    this->semester++;
 }
+void Student ::operator+= (unsigned int semester){
+    this->semester+=semester;
+}
+void Student ::operator-= (unsigned int semester){
+    this->semester-=semester;
 
+}
+Student& Student::operator=(const Student &s){
+    std::cout << "Copy Constructor" <<std::endl;
+    if (this->AM){
+        delete [] this->AM;
+    }
+    this->AM = new char[strlen(s.AM)+1];
+    strcpy(this->AM,s.AM);
+    this->name = s.name;
+    this->semester = s.semester;
+    return *this;
+}
