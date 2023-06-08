@@ -5,6 +5,5 @@ Course::Course(const std::string code, const std::string name, unsigned int hour
 }
 
 Course::~Course(){
-    // std::cout << " Καταστροφή Φοιτητή" << std::endl;
-    // delete[] AM;
+    std::cout << " Καταστροφή Μαθήματος" << std::endl;
 }

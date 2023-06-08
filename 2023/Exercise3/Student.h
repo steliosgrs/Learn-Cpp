@@ -16,7 +16,7 @@ private:
     std::string name;
     unsigned int semester;
     // Exercise 3
-    std::vector<std::pair<Course*, float>> courses;
+    std::vector<Course*> courses;
     std::vector<std::pair<Course*, float>> pass_courses;
 
 public:
@@ -26,7 +26,7 @@ public:
     Student(const Student&);
 
     // Exercise 3
-    Student(const char *, std::string, unsigned int, std::vector<std::pair<Course*, float>> );
+    // Student(const char *, std::string, unsigned int, std::vector<std::pair<Course*, float>> );
     Student &operator=(const Student &);
 
 // Destructor

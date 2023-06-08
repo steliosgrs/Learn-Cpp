@@ -33,6 +33,7 @@ Student::Student(const Student &s){
     this->semester = s.semester;
 }
 
+
 // Destructor
 Student::~Student(){
     std::cout << " Καταστροφή Φοιτητή " << this->name << std::endl;

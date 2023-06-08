@@ -2,6 +2,8 @@
 #define _COURSE_H_
 #include <vector>
 #include <string>
+#include <iostream>
+
 /* Header file
     - Class Attributes
     - Functions Prototypes*/
@@ -13,10 +15,7 @@ private:
     std::string code;
     std::string name;
     unsigned int hours;
-    bool semester;
-    // enum semester{Χειμερινό, Εαρινό};
-        // enum semester{Xeimerino = "Χειμερινό",
-        //             Earino = "Εαρινό"};
+    bool semester; // 0 Χειμερινό - 1 Εαρινό
 
 public:
 // Constructors
