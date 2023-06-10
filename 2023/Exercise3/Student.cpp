@@ -6,7 +6,7 @@
 
 // Constructors
 Student::Student(const char *AM, std::string name){
-    std::cout << " Δημιουργία Φοιτητή" << std::endl;
+    // std::cout << " Δημιουργία Φοιτητή" << std::endl;
     int size;
     size = strlen(AM);
     this->AM = new char[size+1];
@@ -16,7 +16,7 @@ Student::Student(const char *AM, std::string name){
 }
 
 Student::Student(const char *AM, std::string name, unsigned int semester){
-    std::cout << " Δημιουργία Φοιτητή με εξάμηνο" << std::endl;
+    // std::cout << " Δημιουργία Φοιτητή" << std::endl;
     int size;
     size = strlen(AM);
     this->AM = new char[size+1];
@@ -36,7 +36,7 @@ Student::Student(const Student &s){
 
 // Destructor
 Student::~Student(){
-    std::cout << " Καταστροφή Φοιτητή " << this->name << std::endl;
+    std::cout << "Καταστροφή Φοιτητή " << this->name << std::endl;
     delete[] this->AM;
 }
 
@@ -57,16 +57,24 @@ void Student::setSemester(const unsigned int semester){
 }
 
 //Getters
-char* Student::getAM(){
+char* Student::getAM() const{
     return this->AM;
 }
 
-std::string Student::getName(){
+std::string Student::getName() const{
     return this->name;
 }
 
-unsigned int Student::getSemester(){
+unsigned int Student::getSemester() const{
     return this->semester;
+}
+
+const std::vector<Course*> &Student::getCourses() const{
+    return this->courses;
+}
+const std::vector<std::pair<Course*, float>> &Student::getPassedCourses() const{
+    return this->passed_courses;
+
 }
 
 //Εμφάνιση των στοιχείων του φοιτητή

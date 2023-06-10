@@ -13,31 +13,41 @@ std::ostream& operator<< (std::ostream &,  Student&);
 int main(int argc, char const *argv[]) {
     //system ("chcp 1253");
 
-    // Constructor Μόνο το ΑΜ και το Ονοματεπώνυμο
-    Student ste("cse45354","Στέλιος Γεωργαράς");
-    std::cout << ste;
-    std::cout <<std::endl;
-
-    // Constructor για όλα τα χαρακτηριστικά
+    // Constructor Φοιτητών
+    Student stelios("cse45354","Στέλιος Γεωργαράς", 4);
     Student kiri("kiri12345","Κυριάκος Παπαδόπουλος", 4);
-    std::cout << kiri;
-    std::cout << std::endl;
 
-    // Αύξηση εξαμήνου
-    kiri++;
-    std::cout << "Αύξηση εξαμήνου" << std::endl;
-    std::cout << kiri;
-    std::cout << std::endl;
+    // Constructor Μαθημάτων
+    Course cpp("c1", "C++", 4, true);
+    Course java("c2", "Java", 5, false);
+    Course algebra("c3", "Άλγεβρα", 5, false);
+    Course ls("c4", "Λειτουργικά Συστήματα", 6, true);
 
-    // Copy Constructor 
-    Student test(kiri);
-    std::cout << "Υπερφόρτωση Τελεστή +=" << std::endl;
-    test+=5;
-    std::cout<<test;
+    // Υπερφόρτωση Τελεστή +=
+    stelios+=cpp;
+    stelios+=java;
+    std::cout << "Υπερφόρτωση Τελεστή += Προσκήθηκη δηλωμένων μαθημάτων ";
+    for (const auto & course: stelios.getCourses()){
+        std::cout << course->getName() << " ";
+    }
+    std::cout << std::endl <<std::endl;
 
-    std::cout << "Υπερφόρτωση Τελεστή -=" << std::endl;
-    test-=5;
-    std::cout<<test;
-    std::cout << std::endl;
+    // Υπερφόρτωση Τελεστή =
+    std::cout << "Υπερφόρτωση Τελεστή = Εκχώρηση Κλάση Φοιτητής" << std::endl;
+    Student marios("mar45354","Μάριος", 6);
+    marios = stelios;
+    std::cout << marios;
+    std::cout << std::endl <<std::endl;
+
+    // Υπερφόρτωση Τελεστή +=
+    // // Copy Constructor 
+    // std::cout << "Υπερφόρτωση Τελεστή +=" << std::endl;
+    // test+=5;
+    // std::cout<<test;
+
+    // std::cout << "Υπερφόρτωση Τελεστή -=" << std::endl;
+    // test-=5;
+    // std::cout<<test;
+    // std::cout << std::endl;
     return 0;
 }

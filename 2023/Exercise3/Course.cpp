@@ -8,7 +8,7 @@ Course::Course(const std::string code, const std::string name, unsigned int hour
 }
 
 Course::~Course(){
-    std::cout << " Καταστροφή Μαθήματος" << std::endl;
+    std::cout << "Καταστροφή Μαθήματος " << this->name << std::endl;
 }
 
 

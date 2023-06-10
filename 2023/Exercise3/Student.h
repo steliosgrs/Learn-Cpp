@@ -39,9 +39,12 @@ public:
     void setSemester(const unsigned int);
 
     // Getters
-    char* getAM();
-    std::string getName();
-    unsigned int getSemester();
+    char* getAM() const;
+    std::string getName() const;
+    unsigned int getSemester() const;
+    const std::vector<Course*> &getCourses() const;
+    const std::vector<std::pair<Course*, float>> &getPassedCourses() const;
+
     
     // Μέθοδοι
     // Semester Operations - Exercise 2
