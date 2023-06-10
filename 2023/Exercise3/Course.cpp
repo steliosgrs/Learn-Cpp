@@ -1,7 +1,10 @@
 #include "Course.h"
 
 Course::Course(const std::string code, const std::string name, unsigned int hours, bool semester){
-
+    this->code = code;
+    this->name = name;
+    this->hours = hours;
+    this->semester = semester;
 }
 
 Course::~Course(){

@@ -17,7 +17,7 @@ private:
     unsigned int semester;
     // Exercise 3
     std::vector<Course*> courses;
-    std::vector<std::pair<Course*, float>> pass_courses;
+    std::vector<std::pair<Course*, float>> passed_courses;
 
 public:
 // Constructors
@@ -26,7 +26,6 @@ public:
     Student(const Student&);
 
     // Exercise 3
-    // Student(const char *, std::string, unsigned int, std::vector<std::pair<Course*, float>> );
     Student &operator=(const Student &);
 
 // Destructor
@@ -60,7 +59,7 @@ public:
     bool operator>=(const Student & );
 
     // Overload +=
-    void operator+=(const std::pair<Course*, float> &);
+    Student& operator+=(Course &);
 };
 
 

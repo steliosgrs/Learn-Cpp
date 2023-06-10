@@ -22,7 +22,7 @@ public:
     Course(const std::string, const std::string, unsigned int, bool);
 
 // Destructor
-    virtual ~Course();
+    ~Course();
 
 // ======Setters Getters Μέθοδοι======
 

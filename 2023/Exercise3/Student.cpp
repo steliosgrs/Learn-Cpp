@@ -86,38 +86,50 @@ void Student ::operator-= (unsigned int semester){
 }
 
 // Exercise 3
-void Student::operator+=(const std::pair<Course*, float> &course){
-    this->courses.push_back(course);
+Student& Student::operator+=(Course &course){
+    courses.push_back(&course);
+    return *this;
 }
 
 
+// Exercise 3 Overload =
 Student& Student::operator=(const Student &s){
-    std::cout << "Copy Constructor" <<std::endl;
-    if (this->AM){
-        delete [] this->AM;
+    // Έλεγχος για το εάν ο τελεστής = γίνεται σε ένα
+    // αντικείμενο με τον ίδιο του τον εαυτό.
+    if (this == &s){
+        return *this; // Θεωρώ ότι έχει γίνει η εκχώρηση, επιστρέφω τον εαυτό του
     }
+    delete []AM;
     this->AM = new char[strlen(s.AM)+1];
     strcpy(this->AM,s.AM);
     this->name = s.name;
     this->semester = s.semester;
-    return *this;
+    courses = s.courses;
+    passed_courses = s.passed_courses;
+    return *this; // S1 = S2 = S3 
 }
 
+// Semester Operations - Exercise 3
 bool Student::operator== (const Student &stud){
     return this->semester==stud.semester;
 }
+ 
 bool Student::operator!= (const Student &stud){
     return this->semester!=stud.semester;
 }
+
 bool Student::operator< (const Student &stud){
     return this->semester<stud.semester;
 }
+
 bool Student::operator<= (const Student &stud){
     return this->semester<=stud.semester;
 }
+
 bool Student::operator> (const Student &stud){
     return this->semester>stud.semester;
 }
+
 bool Student::operator>= (const Student &stud){
     return this->semester>=stud.semester;
 }
