@@ -1,7 +1,5 @@
 #ifndef STUDENT_H
 #define STUDENT_H
-// #include <vector>
-// #include <string>
 #include <stdio.h>
 #include "Course.h"
 /* Header file
@@ -43,7 +41,7 @@ public:
     std::string getName() const;
     unsigned int getSemester() const;
     const std::vector<Course*> &getCourses() const;
-    const std::vector<std::pair<Course*, float>> &getPassedCourses() const;
+    std::vector<std::pair<Course*, float>> &getPassedCourses();
 
     
     // Μέθοδοι
@@ -63,6 +61,9 @@ public:
 
     // Overload +=
     Student& operator+=(Course &);
+
+    // Write to csv file
+    void writeCSV(const std::string &);
 };
 
 

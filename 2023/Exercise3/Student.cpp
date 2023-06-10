@@ -1,5 +1,4 @@
 #include <iostream>
-// #include <stdio.h>
 #include <string.h>
 #include <new>
 #include "Student.h"
@@ -72,14 +71,23 @@ unsigned int Student::getSemester() const{
 const std::vector<Course*> &Student::getCourses() const{
     return this->courses;
 }
-const std::vector<std::pair<Course*, float>> &Student::getPassedCourses() const{
+std::vector<std::pair<Course*, float>> &Student::getPassedCourses(){
     return this->passed_courses;
 
 }
 
 //Εμφάνιση των στοιχείων του φοιτητή
 std::ostream& operator<<(std::ostream &output, Student& student){
+    float sum = 0;
+    int counter = 0 ;
     output << student.getAM() << ", " << student.getName() << ", " << student.getSemester() << std::endl;
+    for (size_t i = 0; i < student.getPassedCourses().size(); i++){
+        std::cout << student.getPassedCourses()[i].first->getName() << " ";
+        std::cout << student.getPassedCourses()[i].second << std::endl;
+        sum+=student.getPassedCourses()[i].second;
+        counter+=1;
+    }
+    output << "Μέσος Όρος: " << float(sum / counter)<< std::endl;
     return output;
 }
 // Αύξηση του τρέχονοτος εξαμήνου
@@ -98,7 +106,6 @@ Student& Student::operator+=(Course &course){
     courses.push_back(&course);
     return *this;
 }
-
 
 // Exercise 3 Overload =
 Student& Student::operator=(const Student &s){
@@ -121,7 +128,7 @@ Student& Student::operator=(const Student &s){
 bool Student::operator== (const Student &stud){
     return this->semester==stud.semester;
 }
- 
+
 bool Student::operator!= (const Student &stud){
     return this->semester!=stud.semester;
 }
@@ -140,4 +147,12 @@ bool Student::operator> (const Student &stud){
 
 bool Student::operator>= (const Student &stud){
     return this->semester>=stud.semester;
+}
+
+// Write to csv file
+void Student::writeCSV(const std::string &row){
+    std::ofstream file(name + ".csv");
+    
+    file.close();
+
 }
