@@ -8,7 +8,7 @@
 std::ostream& operator<< (std::ostream &,  Student&);
 
 int main(int argc, char const *argv[]) {
-    //system ("chcp 1253");
+    // system ("chcp 1253");
 
     // Constructor Φοιτητών
     Student stelios("cse45354","Στέλιος Γεωργαράς", 4);
@@ -31,16 +31,15 @@ int main(int argc, char const *argv[]) {
     std::cout << std::endl <<std::endl;
     
     srand(time(NULL));
-    // Περασμένα μαθήματα
+    // Δημιουργία Περασμένων μαθημάτων
     for (size_t i = 0; i < stelios.getCourses().size(); i++){
-        
         float grade;
         do {
             grade = float(rand() % 10);
         } while(grade <= 5);
         stelios.getPassedCourses().push_back(std::make_pair(stelios.getCourses()[i],grade));
-
     }
+
     // Υπερφόρτωση Τελεστή =
     std::cout << "Υπερφόρτωση Τελεστή = Εκχώρηση Κλάση Φοιτητής" << std::endl;
     Student marios("mar45354","Μάριος", 6);
@@ -69,17 +68,15 @@ int main(int argc, char const *argv[]) {
     }
     std::cout << std::endl <<std::endl;
 
-
     // Υπερφόρτωση Τελεστή << για τα δηλωμένα μαθήματα
     std::cout << stelios; 
 
-    // std::cout << "Υπερφόρτωση Τελεστή +=" << std::endl;
-    // test+=5;
-    // std::cout<<test;
 
-    // std::cout << "Υπερφόρτωση Τελεστή -=" << std::endl;
-    // test-=5;
-    // std::cout<<test;
-    // std::cout << std::endl;
+    stelios.writeCSV("Στέλιος");
+    marios+=ls;
+    marios+=algebra;
+    marios.writeCSV("Μάριος");
+
+
     return 0;
 }

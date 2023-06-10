@@ -150,9 +150,36 @@ bool Student::operator>= (const Student &stud){
 }
 
 // Write to csv file
-void Student::writeCSV(const std::string &row){
-    std::ofstream file(name + ".csv");
-    
+void Student::writeCSV(const std::string row){
+    std::ofstream file(row + ".csv");
+    if (file.is_open()){
+        file << "Code," << "Name" << ",";
+        file << "Hours" << "," << "Semester" << ",Grade"<<std::endl;
+        for (size_t i = 0; i < this->getPassedCourses().size(); i++){
+            file << this->getPassedCourses()[i].first->getCode() << ",";
+            file << this->getPassedCourses()[i].first->getName() << ",";
+            file << this->getPassedCourses()[i].first->getHours() << ",";
+            if (this->getPassedCourses()[i].first->getSemester()){
+                file << "Εαρινό" << ",";
+            }
+            else{
+                file << "Χειμερινό" << ",";
+            }
+            file << this->getPassedCourses()[i].second << std::endl;
+        }
+        for (size_t i = 0; i < this->getCourses().size(); i++){
+            file << this->getCourses()[i]->getCode() << ",";
+            file << this->getCourses()[i]->getName() << ",";
+            file << this->getCourses()[i]->getHours() << ",";
+            if (this->getCourses()[i]->getSemester()){
+                file << "Εαρινό" << ",";
+            }
+            else{
+                file << "Χειμερινό" << ",";
+            }
+            file << " "<< std::endl; // Δεν υπάρχει βαθμός για τα δηλωμένα μαθήματα
+        }
+    }
     file.close();
 
 }

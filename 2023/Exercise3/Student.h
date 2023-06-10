@@ -1,6 +1,7 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 #include <stdio.h>
+#include <fstream>
 #include "Course.h"
 /* Header file
     - Class Attributes
@@ -63,7 +64,7 @@ public:
     Student& operator+=(Course &);
 
     // Write to csv file
-    void writeCSV(const std::string &);
+    void writeCSV(const std::string );
 };
 
 
