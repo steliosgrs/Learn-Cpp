@@ -26,6 +26,7 @@ Student::Student(const char *AM, std::string name, unsigned int semester){
 
 Student::Student(const Student &s){
     std::cout << "Copy Constructor" <<std::endl;
+    delete[] this->AM;
     this->AM = new char[strlen(s.AM)+1];
     strcpy(this->AM,s.AM);
     this->name = s.name;

@@ -41,7 +41,7 @@ public:
     char* getAM() const;
     std::string getName() const;
     unsigned int getSemester() const;
-    const std::vector<Course*> &getCourses() const;
+    const std::vector<Course*> &getCourses() const ;
     std::vector<std::pair<Course*, float>> &getPassedCourses();
 
     

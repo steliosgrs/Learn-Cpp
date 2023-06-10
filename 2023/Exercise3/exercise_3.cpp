@@ -42,8 +42,10 @@ int main(int argc, char const *argv[]) {
 
     // Υπερφόρτωση Τελεστή =
     std::cout << "Υπερφόρτωση Τελεστή = Εκχώρηση Κλάση Φοιτητής" << std::endl;
-    Student marios("mar45354","Μάριος", 6);
+    Student marios("cse123","Μάριος",5);
     marios = stelios;
+    Course * j = &java;
+    marios.getPassedCourses().push_back(std::make_pair(j,float(8.0)));
     std::cout << marios;
     std::cout << std::endl <<std::endl;
 
