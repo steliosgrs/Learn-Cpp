@@ -4,23 +4,16 @@
 using namespace std;
 class Timestamp {
 
-private:
+// private:
+
+public:
     unsigned int hours;
     unsigned int min;
     unsigned int sec;
 
-public:
-
     Timestamp(unsigned int ,unsigned int,unsigned int);
     Timestamp(const Timestamp &);
     ~Timestamp();
-    // void getHour() const;
-    // void getMin() const;
-    // void getSec() const;
-
-    // unsigned int setHour(unsigned int);
-    // unsigned int setMin(unsigned int) ;
-    // unsigned int setSec(unsigned int) ;
 
     const Timestamp operator+(unsigned int);
     const Timestamp operator+(const Timestamp &);
@@ -29,6 +22,7 @@ public:
 
 
 };
+
 Timestamp::Timestamp(unsigned int h, unsigned int m, unsigned int s){
     if (h < 23 && m < 60 && s < 60){
         this->hours = h;
@@ -46,6 +40,10 @@ Timestamp::Timestamp(const Timestamp &t){
     this->sec = t.sec;
 }
 
+Timestamp::~Timestamp(){
+
+}
+
 const Timestamp Timestamp::operator+(unsigned int sec){
     unsigned int s = this->sec + sec;
     unsigned int m = this->min + sec /60;
@@ -53,6 +51,7 @@ const Timestamp Timestamp::operator+(unsigned int sec){
 
     m = m % 60;
     s = s % 60;
+    h = h % 24;
     Timestamp timestamp(h,m,s);
 
     return timestamp;
@@ -64,12 +63,14 @@ const Timestamp Timestamp::operator+(const Timestamp &t){
 
     m = m % 60;
     s = s % 60;
+    h = h % 24;
+    // cout << h<< m<< s<<endl;
     Timestamp timestamp(h,m,s);
 
     return timestamp;
 }
 string Timestamp::getTime(){
-    return 
+    return "ώρα " + to_string(this->hours) +" λεπτά " +to_string(this->min)+" δευτερολεπτα " +to_string(this->sec);
 }
 bool Timestamp::operator==(const Timestamp &t){
     if (this->hours == t.hours && this->min == t.min && this->sec == t.sec){
@@ -84,5 +85,21 @@ bool Timestamp::operator==(const Timestamp &t){
 int main (){
     Timestamp t1(12,23,23);
     Timestamp t2(t1);
+    cout <<t1.getTime() <<endl;
+    Timestamp t3 = t1+60;
+    
+    cout <<t3.getTime() <<endl;
+
+    Timestamp t4 = t1+t2;
+    cout <<t4.getTime() <<endl;
+
+    if (t4 == t3){
+        cout << "Ίσες" << endl;
+    }
+    else{
+        cout << "όχι Ίσες" << endl;
+
+    }
+
 
 }
