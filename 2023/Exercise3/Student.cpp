@@ -69,7 +69,7 @@ unsigned int Student::getSemester() const{
     return this->semester;
 }
 
-const std::vector<Course*> &Student::getCourses() const{
+const std::vector<Course*> &Student::getCourses() const {
     return this->courses;
 }
 std::vector<std::pair<Course*, float>> &Student::getPassedCourses(){

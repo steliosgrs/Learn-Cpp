@@ -38,6 +38,7 @@ int main(int argc, char const *argv[]) {
             grade = float(rand() % 10);
         } while(grade <= 5);
         stelios.getPassedCourses().push_back(std::make_pair(stelios.getCourses()[i],grade));
+        // stelios.getCourses().erase(std::next(stelios.getCourses().begin())); 
     }
 
     // Υπερφόρτωση Τελεστή =
