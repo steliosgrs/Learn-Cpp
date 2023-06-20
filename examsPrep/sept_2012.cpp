@@ -30,21 +30,24 @@ A  *a2=new A;
 B  *b2=new B;
 A  *c=new B;
 
-C<A>  s1  (a1);
-C<A>  s2  (b1);
-C<A>  s3  (*a2);
-C<A>  s4  (*b2);
-C<A>  s5  (*c);
-C<B>  t1 ( (B) a1);
+C<A>  s1  (a1); // 1
+C<A>  s2  (b1); // 1
+C<A>  s3  (*a2); // 1
+C<A>  s4  (*b2); // 1
+C<A>  s5  (*c); //1  
+cout << "-------------" <<endl;
+// C<B>  t1 ( (B) a1);
 C<B>  t2  (b1);
-C<B>  t3  ( (B) *a2);
+// C<B>  t3  ( (B) *a2);
 C<B>  t4  (* b2);
-C<B>  t5  ( (B) *c);
+// C<B>  t5  ( (B) *c);
+cout << "-------------" <<endl;
 D<A>  u1  ( &a1 );
 D<A>  u2  ( &b1 );
 D<A>  u3  ( a2 );
 D<A>  u4  ( b2 );
 D<A>  u5  ( c );
+cout << "-------------" <<endl;
 D<B>  v1  ( (B* ) &a1 );
 D<B>  v2  ( &b1 );
 D<B>  v3  ( (B* ) a2 );

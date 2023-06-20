@@ -17,6 +17,7 @@ mySolutions/UStrings.cpp
 **.exe
 
 **/*.csv
+**/*.txt
 main
 **/main
 **/*.zip
